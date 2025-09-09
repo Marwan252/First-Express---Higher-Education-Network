@@ -1,24 +1,29 @@
 /* =====================
    Root Variables
 ===================== */
-:root {
-  --font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
-  --primary-color: #d08600;
-  --primary-color-light:#f0b100;
+:root {
+  --main-font-family: "Geist", sans-serif;
+  --sec-font-family:
+  --font-optical-sizing: auto;
+
+  --primary-color: #D08700;
+  --primary-color-light:#F0B100;
   --text-color: #000000;
   --second-color: white;
-  --text-muted: #999999;
+  --text-muted: #4A5565;
+  --text-muted2:#364153;
   --btn-bg: #000;
-  --btn-bg-light: #fff0d2;
+  --btn-bg-light: #FFB51D45;
   --btn-radius: 6px;
 
   --header-padding: 20px 60px;
 
   --hero-padding: 80px 60px;
 
-  --globe-size: 200px;
-  --orbit-size: 500px;
+  --globe-size: 400px;
+  --orbit-size: 450px;
   --flag-size: 50px;
   --orbit-speed: 20s;
 
@@ -38,9 +43,11 @@
 
 body {
   font-family: var(--font-family);
-  color: var(--text-color);
-  line-height: 1.6;
-  background: #fff;
+  /* color: var(--text-color); */
+  /* line-height: 1.6;*/
+  background: #fff; 
+  /* font-optical-sizing: auto;
+  font-style: normal; */
 }
 
 /* =====================
@@ -82,8 +89,11 @@ body {
   left: 0;
   right: 0;
   top: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   z-index: 100;
+  height: 83px;
+  display: flex;
+  align-items: center;
   background-color: white;
 }
 
@@ -91,21 +101,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--header-padding, 10px 20px);
-  height: 70px;
-}
+  height: 100% ;
+} 
 
 .logo {
-  font-size: 22px;
-  font-weight: normal;
-  color: var(--primary-color);
+  height: 59.11px;
+  width: 257px;
 }
 .logo img {
-  vertical-align: middle;
-  height: 50px;
+  object-fit: cover;
 }
 
-/* زرار الهامبرجر */
 .menu-toggle {
   display: none;
   font-size: 26px;
@@ -116,32 +122,40 @@ body {
 .nav {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
+  width: 491px;
 }
 
 .nav a {
   text-decoration: none;
   color: var(--text-color);
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 20px;
   padding: 10px 8px;
   border-radius: var(--btn-radius);
 }
 .nav .active {
   background-color: var(--btn-bg-light, #f0f0f0);
 }
-
+.nav a:hover{
+  background-color: var(--btn-bg-light, #f0f0f0);
+  
+}
 .btn {
-  padding: 10px 20px;
+  padding: 7px 16px;
+  text-align: center;
+  font-weight: 400px;
+  font-size: 16px;
   background: var(--second-color);
   border-radius: var(--btn-radius);
   text-decoration: none;
-  font-size: 14px;
   transition: 0.3s;
   color: var(--btn-bg);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   border-style: solid;
   border-width: 3px;
   border-color: transparent var(--primary-color) transparent transparent;
+
   animation: rotateborder 3s linear infinite;
 }
 
@@ -170,9 +184,47 @@ body {
 /* =========================
    Responsive Header
 ========================= */
+
+
+/* Medium */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+    order: 3;
+  }
+
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    border-radius: var(--btn-radius);
+    display: none;
+    order: 5;
+  }
+
+
+  .nav a {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+}
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
+    margin-left: 50px;
   }
 
   .nav {
@@ -194,7 +246,11 @@ body {
     margin: 5px 0;
     text-align: left;
   }
-
+  .header .btn{
+    /* visibility: hidden;
+    flex-shrink: 1; */
+    display: none;
+  }
   .nav.show {
     display: flex;
   }
@@ -202,12 +258,12 @@ body {
 
 
 
-/* =====================
+/* =========================================================================================================
    Hero Section
-===================== */
+========================================================================================================= */
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   padding: 50px 0;
 }
 .hero .container {
@@ -222,19 +278,27 @@ body {
   flex: 1;
 }
 .hero-text h1 {
-  font-size: 42px;
+  font-size: 60px;
   font-weight: bold;
+  line-height: 75px;
+  font-weight: 800;
 }
 .hero-text h1 span {
   color: var(--primary-color);
 }
 .hero-text p {
   margin: 20px 0;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 400px;
+  line-height: 32px;
   color: var(--text-muted);
+  width: 450px;
 }
 .hero-buttons {
   margin-top: 50px;
+  font-weight: 500px;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 .btn-primary {
@@ -251,7 +315,7 @@ body {
   padding: 12px 25px;
   text-decoration: none;
   border-radius: var(--btn-radius);
-  border: 1px solid var(--btn-bg);
+  border: 1px solid #D1D5DC;
 }
 
 /* =====================
@@ -287,7 +351,7 @@ body {
   margin-left: 50px;
   width: var(--orbit-size);
   height: var(--orbit-size);
-  border: 2px dotted var(--text-muted); 
+  border: 2px dashed #D1D5DC; 
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -326,6 +390,64 @@ body {
   }
   to {
     transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+/* =========================
+   Responsive Hero
+========================= */
+
+
+/* Medium */
+@media (max-width: 992px) {
+  .hero .container{
+    flex-direction: column;
+  }
+  .hero .hero-globe{
+    order: 1;
+    margin-bottom: 20px;
+  }
+  .hero .hero-text{
+    order: 2;
+    flex-basis: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  .hero .hero-text h1{
+    width: 100%;
+  }
+  .hero .hero-text p{
+    width: 100%;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .hero .container{
+    height: fit-content;
+  }
+  .hero .hero-globe{
+    display: none;
+  }
+  .hero .hero-text p{
+    padding-right: 20px;
+  }
+  .hero-text h1{
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  .hero-text p{
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .hero-buttons{
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-buttons .btn-secondary{
+    margin-top: 30px;
+    margin-bottom: 50px;
   }
 }
 
