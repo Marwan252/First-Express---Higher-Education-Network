@@ -33,7 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showSlide(index) {
     for (let i = 0; i < total; i++) {
-      cards[i].style.transform = `translate(-${30 * ((i - index + total) % total)}px, 0)`;
+      if (window.innerWidth >= 600) {
+        cards[i].style.transform = `translate(-${20 * ((i - index + total) % total)}px, 0)`;
+      }else{
+        cards[i].style.transform = `translate(-${5 * ((i - index + total) % total)}px, 0)`;
+
+      }
       cards[i].style.zIndex = total - ((i - index + total) % total);
     }
     dots.forEach(dot => dot.classList.remove("active"));
