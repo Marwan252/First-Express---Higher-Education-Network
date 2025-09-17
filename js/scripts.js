@@ -1,3 +1,18 @@
+// Header js for moving background color for links:
+
+myLinks = document.querySelectorAll("#nav a")
+myLinks.forEach(function(ele){
+  ele.onclick = function(){
+    // remove active class for all
+    myLinks.forEach(function(ele){
+      ele.classList.remove("active")
+    })
+    this.classList.add("active")
+  }
+})
+
+// Header Toggle Menu
+
 const menuToggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
 
@@ -176,80 +191,80 @@ document.addEventListener("DOMContentLoaded", () => {
   startAutoSlide();
 });
 
-// ========================================================
-// Blogs Carousel
-// ========================================================
+// // ========================================================
+// // Blogs Carousel
+// // ========================================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  const blogsCarousel = document.getElementById("blogsCarousel");
-  const prevBtn = document.getElementById("blogPrev");
-  const nextBtn = document.getElementById("blogNext");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const blogsCarousel = document.getElementById("blogsCarousel");
+//   const prevBtn = document.getElementById("blogPrev");
+//   const nextBtn = document.getElementById("blogNext");
   
-  if (!blogsCarousel) return;
+//   if (!blogsCarousel) return;
   
-  const blogCards = blogsCarousel.children;
-  const totalCards = blogCards.length;
-  let currentIndex = 0;
-  const cardsToShow = window.innerWidth <= 768 ? 1 : 3;
-  let autoSlideInterval;
+//   const blogCards = blogsCarousel.children;
+//   const totalCards = blogCards.length;
+//   let currentIndex = 0;
+//   const cardsToShow = window.innerWidth <= 768 ? 1 : 3;
+//   let autoSlideInterval;
 
-  function updateBlogsCarousel() {
-    const cardWidth = 100 / cardsToShow;
-    const translateX = -(currentIndex * cardWidth);
-    blogsCarousel.style.transform = `translateX(${translateX}%)`;
-  }
+//   function updateBlogsCarousel() {
+//     const cardWidth = 100 / cardsToShow;
+//     const translateX = -(currentIndex * cardWidth);
+//     blogsCarousel.style.transform = `translateX(${translateX}%)`;
+//   }
 
-  function nextBlog() {
-    currentIndex = (currentIndex + 1) % (totalCards - cardsToShow + 1);
-    updateBlogsCarousel();
-  }
+//   function nextBlog() {
+//     currentIndex = (currentIndex + 1) % (totalCards - cardsToShow + 1);
+//     updateBlogsCarousel();
+//   }
 
-  function prevBlog() {
-    currentIndex = currentIndex === 0 ? (totalCards - cardsToShow) : currentIndex - 1;
-    updateBlogsCarousel();
-  }
+//   function prevBlog() {
+//     currentIndex = currentIndex === 0 ? (totalCards - cardsToShow) : currentIndex - 1;
+//     updateBlogsCarousel();
+//   }
 
-  function startBlogAutoSlide() {
-    autoSlideInterval = setInterval(nextBlog, 5000);
-  }
+//   function startBlogAutoSlide() {
+//     autoSlideInterval = setInterval(nextBlog, 5000);
+//   }
 
-  function stopBlogAutoSlide() {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-    }
-  }
+//   function stopBlogAutoSlide() {
+//     if (autoSlideInterval) {
+//       clearInterval(autoSlideInterval);
+//     }
+//   }
 
-  // Event listeners
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      nextBlog();
-      stopBlogAutoSlide();
-      startBlogAutoSlide();
-    });
-  }
+//   // Event listeners
+//   if (nextBtn) {
+//     nextBtn.addEventListener("click", () => {
+//       nextBlog();
+//       stopBlogAutoSlide();
+//       startBlogAutoSlide();
+//     });
+//   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      prevBlog();
-      stopBlogAutoSlide();
-      startBlogAutoSlide();
-    });
-  }
+//   if (prevBtn) {
+//     prevBtn.addEventListener("click", () => {
+//       prevBlog();
+//       stopBlogAutoSlide();
+//       startBlogAutoSlide();
+//     });
+//   }
 
-  // Pause on hover
-  blogsCarousel.addEventListener("mouseenter", stopBlogAutoSlide);
-  blogsCarousel.addEventListener("mouseleave", startBlogAutoSlide);
+//   // Pause on hover
+//   blogsCarousel.addEventListener("mouseenter", stopBlogAutoSlide);
+//   blogsCarousel.addEventListener("mouseleave", startBlogAutoSlide);
 
-  // Handle window resize
-  window.addEventListener("resize", () => {
-    const newCardsToShow = window.innerWidth <= 768 ? 1 : 3;
-    if (newCardsToShow !== cardsToShow) {
-      currentIndex = 0;
-      updateBlogsCarousel();
-    }
-  });
+//   // Handle window resize
+//   window.addEventListener("resize", () => {
+//     const newCardsToShow = window.innerWidth <= 768 ? 1 : 3;
+//     if (newCardsToShow !== cardsToShow) {
+//       currentIndex = 0;
+//       updateBlogsCarousel();
+//     }
+//   });
 
-  // Initialize
-  updateBlogsCarousel();
-  startBlogAutoSlide();
-});
+//   // Initialize
+//   updateBlogsCarousel();
+//   startBlogAutoSlide();
+// });
